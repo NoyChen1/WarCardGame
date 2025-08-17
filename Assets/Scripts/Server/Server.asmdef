@@ -1,0 +1,19 @@
+{
+    "name": "Server",
+    "rootNamespace": "",
+    "references": [
+        "GUID:23627beabc1a39740b9f8fed2ed7e1ef",
+        "GUID:f51ebe6a0ceec4240a699833d6309b23",
+        "GUID:7e97248572e036a479f3d2dac56e13aa",
+        "GUID:128105ffa968b8c44a07487fdc28e40c"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
