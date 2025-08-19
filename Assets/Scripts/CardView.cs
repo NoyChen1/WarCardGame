@@ -9,6 +9,7 @@ public class CardView : MonoBehaviour
     [SerializeField] private Image _background;
     [SerializeField] private Image _artwork;
     [SerializeField] private Sprite _backSprite;
+    [SerializeField] private Sprite _frontSprite;
     [SerializeField] private TextMeshProUGUI _rankTextLU;
     [SerializeField] private TextMeshProUGUI _rankTextRB;
 
@@ -22,7 +23,7 @@ public class CardView : MonoBehaviour
 
         if (faceUp)
         {
-            _background.sprite = null;
+            _background.sprite = _frontSprite;
             _artwork.gameObject.SetActive(true);
             _artwork.sprite = data.Artwork;
             _rankTextLU.text = GetRankLabel(data.Rank);
@@ -31,7 +32,8 @@ public class CardView : MonoBehaviour
         }
         else
         {
-            _artwork.sprite = _backSprite;
+            _background.sprite = _backSprite;
+            _artwork.gameObject.SetActive(false);
             _rankTextLU.enabled = _rankTextRB.enabled = false;
         }
     }
@@ -54,10 +56,8 @@ public class CardView : MonoBehaviour
         await tween.AsyncWaitForCompletion();
     }
 
-    public async UniTask FlipTo(bool faceUp, float dur = 0.28f)
+    public async UniTask FlipTo(bool faceUp, float dur = 0.35f)
     {
-        if (_isFaceUp == faceUp) return;
-
         var t1 = transform.DORotate(new Vector3(0, 90, 0), dur / 2f, RotateMode.Fast);
         await t1.AsyncWaitForCompletion();
 

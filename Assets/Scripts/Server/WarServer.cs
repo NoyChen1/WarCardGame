@@ -65,7 +65,8 @@ public class WarServer
         {
             var p = _player.Dequeue();
             var o = _opponent.Dequeue();
-            pot.Add(p); pot.Add(o);
+            pot.Add(p); 
+            pot.Add(o);
 
             res.Steps.Add(new RoundStep { IsPlayer = true, Visibility = StepVisibility.FaceUp, Card = p });
             res.Steps.Add(new RoundStep { IsPlayer = false, Visibility = StepVisibility.FaceUp, Card = o });
@@ -88,19 +89,22 @@ public class WarServer
             {
                 if (_player.Count < 2 && _opponent.Count < 2) 
                 { 
-                    res.Outcome = TurnOutcome.Draw; res.GameOver = true; 
+                    res.Outcome = TurnOutcome.Draw; 
+                    res.GameOver = true; 
                     break; 
                 }
                 
                 if (_player.Count < 2) 
                 { 
-                    Award(_opponent, pot); res.Outcome = TurnOutcome.OpponentWins; 
+                    Award(_opponent, pot); 
+                    res.Outcome = TurnOutcome.OpponentWins; 
                     res.GameOver = _player.Count == 0; 
                     break; 
                 }
                 else /*opponent<2*/      
                 { 
-                    Award(_player, pot); res.Outcome = TurnOutcome.PlayerWins; 
+                    Award(_player, pot); 
+                    res.Outcome = TurnOutcome.PlayerWins; 
                     res.GameOver = _opponent.Count == 0; 
                     break; 
                 }
@@ -108,7 +112,8 @@ public class WarServer
 
             var pDown = _player.Dequeue();
             var oDown = _opponent.Dequeue();
-            pot.Add(pDown); pot.Add(oDown);
+            pot.Add(pDown); 
+            pot.Add(oDown);
             res.Steps.Add(new RoundStep { IsPlayer = true, Visibility = StepVisibility.FaceDown, Card = pDown });
             res.Steps.Add(new RoundStep { IsPlayer = false, Visibility = StepVisibility.FaceDown, Card = oDown });
         }
